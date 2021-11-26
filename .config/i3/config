@@ -1,4 +1,3 @@
-# set modifier
 set $super Mod4
 set $alt Mod1
 
@@ -29,8 +28,9 @@ bindsym $super+Shift+t exec --no-startup-id hsetroot -cover $(find $HOME/.local/
 # Window Screenshot and preview
 bindsym Print exec --no-startup-id 	scrot -e 'mv $f ~/Pictures/Screenshots/ && sxiv -i ~/Pictures/Screenshots/$f'
 
-bindsym $super+l exec --no-startup-id betterlockscreen -l -t 'Hi Vishal'
-bindsym $super+Shift+l exec --no-startup-id betterlockscreen -u $HOME/.local/share/wallhaven && notify-send "Lockscreen wallpaper Updated"
+# lockscreen
+bindsym $super+Delete exec --no-startup-id betterlockscreen -l -t 'Hi Vishal'
+bindsym $super+Shift+Delete exec --no-startup-id betterlockscreen -u $HOME/.local/share/wallhaven && notify-send "Lockscreen wallpaper Updated"
 
 # shutdown and restart	
 bindsym $super+F4 exec --no-startup-id notify-send "Shutting Down PC" && systemctl poweroff
@@ -66,12 +66,25 @@ bindsym $super+q kill
 bindsym $super+c kill
 
 # change focus 
+bindsym $super+h focus left
+bindsym $super+k focus down
+bindsym $super+j focus up
+bindsym $super+l focus right
+
+# change focus (optional)
 bindsym $super+Left focus left
 bindsym $super+Down focus down
 bindsym $super+Up focus up
 bindsym $super+Right focus right
 
+
 # move focused window 
+bindsym $super+Shift+h move left
+bindsym $super+Shift+k move down
+bindsym $super+Shift+j move up
+bindsym $super+Shift+l move right
+
+# move focused window(optional) 
 bindsym $super+Shift+Left move left
 bindsym $super+Shift+Down move down
 bindsym $super+Shift+Up move up
@@ -79,7 +92,7 @@ bindsym $super+Shift+Right move right
 
 
 # split in horizontal orientation
-bindsym $super+h split h
+bindsym $super+o split h
 
 # split in vertical orientation
 bindsym $super+v split v
@@ -150,7 +163,8 @@ bindsym Control+Right resize grow width 5 px or 5 ppt
 bar {
     i3bar_command i3bar --transparency
     position top
-        colors {
+    height 24
+	colors {
         background #2f343fbf
         statusline #2f343f
         separator #4b5262
@@ -179,7 +193,7 @@ for_window [class=Thunar|Caja|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=Sublime|Caja|atril|qutebrowser|Firefox|telegram-desktop|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 
 # colour of border, background, text, indicator, and child_border
-client.focused              #bf616a #2f343f #d8dee8 #d8dee8 #4a7eff
+client.focused              #bf616a #2f343f #d8dee8 #4a7eff #4a7eff
 client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
