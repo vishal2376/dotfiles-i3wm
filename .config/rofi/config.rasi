@@ -1,0 +1,31 @@
+configuration {
+	theme: "~/.config/rofi/themes/awesome.rasi";
+	icon-theme: "~/.icons/Fluent-purple-dark";
+	font: "Iosevka Nerd Font 9";
+	modi: "window,drun,run";
+	combi-modi: "drun, window";
+	show-icons: true;
+	drun-display-format: "{name}";
+	width: 30;
+	columns: 1;
+	lines: 12;
+	fixed-num-lines: true;
+	location: 0;
+	yoffset: 0;
+	sidebar-mode: false;
+	fullscreen: false;
+	display-drun: " ";
+	display-run: " ";
+	display-window: " ";
+	
+	/* Key bindings: */
+	kb-mode-next: "Control+Right";
+	kb-mode-previous: "Control+Left";
+	kb-move-word-back: "Control+b";
+	kb-move-word-forward: "Control+w";
+	kb-move-char-back: "Control+h";
+	kb-move-char-forward: "Control+l";
+	kb-clear-line: "";
+	kb-remove-char-back: "BackSpace";
+}
+
