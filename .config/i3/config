@@ -2,7 +2,8 @@ set $super Mod4
 set $alt Mod1
 
 #--------------font setup-----------------
-font pango:Noto Sans 8
+#font pango:Noto Sans 8
+font pango:Liga SFMono Nerd Font 9
 
 
 #----------------Window Gaps--------------
