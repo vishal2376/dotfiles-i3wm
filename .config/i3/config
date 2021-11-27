@@ -1,28 +1,51 @@
 set $super Mod4
 set $alt Mod1
 
-# set font
-font pango:Noto Sans 8
+#--------------font setup-----------------
+#font pango:Noto Sans 8
+#font pango:DejaVu Sans Mono 8
+font pango:Liga SFMono Nerd Font 10
 
-# Use Mouse+$super to drag floating windows to their wanted position
+
+#----------------Window Gaps--------------
+for_window [class="^.*"] border pixel 0
+gaps inner 20
+smart_gaps on
+smart_borders on
+smart_borders no_gaps
+# border_radius 5
+
+
+#---------move floating windows------------
 floating_modifier $super
 
-#autostart
-exec --no-startup-id hsetroot -cover $(find $HOME/.local/share/wallhaven -type f | shuf -n 1) 
-exec --no-startup-id xsettingsd &
-exec --no-startup-id compton -b
 
-# start a terminal 
+#----------Autostart applications----------
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec_always --no-startup-id picom --experimental-backend &
+exec --no-startup-id polybar main
+exec_always --no-startup-id killall polybar && polybar main 
+exec --no-startup-id hsetroot -cover $(find $HOME/.local/share/wallhaven -type f | shuf -n 1) 
+#exec --no-startup-id compton -b
+exec --no-startup-id nm-applet
+#exec flatpak run com.discordapp.Discord
+
+
+#---------------Run terminal----------------- 
 bindsym $super+Shift+Return exec --no-startup-id urxvt
 bindsym $super+Return exec --no-startup-id gnome-terminal
 
-# start dmenu (a program launcher)
+
+#-----------------Launch Dmenu----------------
 bindsym $super+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
  
-# start rofi
+
+#-----------------Launch Rofi----------------
 bindsym $super+d exec rofi -show drun 
 
-# set random wallpaper 
+
+#----------------Custom commands-------------
+#set random wallpaper 
 bindsym $super+Shift+t exec --no-startup-id hsetroot -cover $(find $HOME/.local/share/wallhaven -type f | shuf -n 1)
 
 # Window Screenshot and preview
@@ -30,30 +53,32 @@ bindsym Print exec --no-startup-id 	scrot -e 'mv $f ~/Pictures/Screenshots/ && s
 
 # lockscreen
 bindsym $super+Delete exec --no-startup-id betterlockscreen -l -t 'Hi Vishal'
+
+# set random lockscreen wallpaper
 bindsym $super+Shift+Delete exec --no-startup-id betterlockscreen -u $HOME/.local/share/wallhaven && notify-send "Lockscreen wallpaper Updated"
 
 # shutdown and restart	
 bindsym $super+F4 exec --no-startup-id notify-send "Shutting Down PC" && systemctl poweroff
 bindsym $super+Shift+F4 exec --no-startup-id notify-send "Restarting PC" && systemctl reboot	
 
-#Launch Applications
+#Download Wallpapers
+bindsym $super+Shift+w exec --no-startup-id waldl
+
+
+#----------------Launch Applications---------------
 #bindsym $super+w exec --no-startup-id firefox
 bindsym $super+w exec --no-startup-id flashpeak-slimjet
 bindsym $super+e exec --no-startup-id thunar
 
-#Download Wallpapers
-bindsym $super+Shift+w exec --no-startup-id waldl
 
-#change volume
+#----------------Control volume-------------------
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
 bindsym XF86AudioMute exec amixer set Master toggle
 
-#change volume using [PgUp , Pgdown , 0]
+#Alternately change volume using [PgUp , Pgdown]
 bindsym $super+Prior exec --no-startup-id amixer -q set Master 5%+
 bindsym $super+Next exec --no-startup-id mixer -q set Master 5%-
-bindsym $super+0 exec amixer set Master toggle
-
 
 # music control
 bindsym XF86AudioNext exec mpc next
@@ -61,36 +86,37 @@ bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioStop exec mpc stop
 
-# kill focused window
+#----------------Close Window--------------
 bindsym $super+q kill
 bindsym $super+c kill
 
-# change focus 
+
+#---------------Change Focus--------------- 
 bindsym $super+h focus left
 bindsym $super+k focus down
 bindsym $super+j focus up
 bindsym $super+l focus right
 
-# change focus (optional)
+# (optional keys)
 bindsym $super+Left focus left
 bindsym $super+Down focus down
 bindsym $super+Up focus up
 bindsym $super+Right focus right
 
 
-# move focused window 
+#-----------Move Focused Window------------- 
 bindsym $super+Shift+h move left
 bindsym $super+Shift+k move down
 bindsym $super+Shift+j move up
 bindsym $super+Shift+l move right
 
-# move focused window(optional) 
+# (optional keys) 
 bindsym $super+Shift+Left move left
 bindsym $super+Shift+Down move down
 bindsym $super+Shift+Up move up
 bindsym $super+Shift+Right move right
 
-
+#----------------Window Config-----------------
 # split in horizontal orientation
 bindsym $super+o split h
 
@@ -102,7 +128,7 @@ bindsym $super+f fullscreen toggle
 
 # change container layout split
 bindsym $super+s layout toggle split
-#bindsym $super+t layout tabbed
+bindsym $super+t layout tabbed
 
 # toggle tiling / floating
 bindsym $super+space floating toggle
@@ -110,80 +136,74 @@ bindsym $super+space floating toggle
 # change focus between tiling / floating windows
 bindsym $super+Shift+space focus mode_toggle
 
-#set workspace name
-#set $workspace1 
-set $workspace2 2:    Web
-set $workspace3 3:    Coding
-set $workspace4 4:    Files
-set $workspace5 5
-set $workspace6 6
-set $workspace7 7
-set $workspace8 8
-set $workspace9 9
+
+#---------------Workspace Config----------------
+# workspace custom names 
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
 
 # switch to workspace
+bindsym $super+1 workspace $ws1
+bindsym $super+2 workspace $ws2
+bindsym $super+3 workspace $ws3
+bindsym $super+4 workspace $ws4
+bindsym $super+5 workspace $ws5
+bindsym $super+6 workspace $ws6
+bindsym $super+7 workspace $ws7
+bindsym $super+8 workspace $ws8
+bindsym $super+9 workspace $ws9
 bindsym $super+Tab workspace next
 bindsym $super+Control+Right workspace next
 bindsym $super+Control+Left workspace prev
-bindsym $super+1 workspace 1:    Terminal
-bindsym $super+2 workspace $workspace2
-bindsym $super+3 workspace $workspace3
-bindsym $super+4 workspace $workspace4
-bindsym $super+5 workspace $workspace5
-bindsym $super+6 workspace $workspace6
-bindsym $super+7 workspace $workspace7
-bindsym $super+8 workspace $workspace8
-bindsym $super+9 workspace $workspace9
 
 # move focused container to workspace
-bindsym $super+Shift+1 move container to workspace 1:    Terminal
-bindsym $super+Shift+2 move container to workspace $workspace2
-bindsym $super+Shift+3 move container to workspace $workspace3
-bindsym $super+Shift+4 move container to workspace $workspace4
-bindsym $super+Shift+5 move container to workspace $workspace5
-bindsym $super+Shift+6 move container to workspace $workspace6
-bindsym $super+Shift+7 move container to workspace $workspace7
-bindsym $super+Shift+8 move container to workspace $workspace8
-bindsym $super+Shift+9 move container to workspace $workspace9
+bindsym $super+Shift+1 move container to workspace $ws1
+bindsym $super+Shift+2 move container to workspace $ws2
+bindsym $super+Shift+3 move container to workspace $ws3
+bindsym $super+Shift+4 move container to workspace $ws4
+bindsym $super+Shift+5 move container to workspace $ws5
+bindsym $super+Shift+6 move container to workspace $ws6
+bindsym $super+Shift+7 move container to workspace $ws7
+bindsym $super+Shift+8 move container to workspace $ws8
+bindsym $super+Shift+9 move container to workspace $ws9
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+
+#--------------Restart and exit i3-----------------
 bindsym $super+Shift+r restart
-
-# exit i3
 bindsym $super+shift+e exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+
+#---------------------Resize Windows-----------------
 bindsym Control+Left resize shrink width 5 px or 5 ppt
 bindsym Control+Down resize grow height 5 px or 5 ppt
 bindsym Control+Up resize shrink height 5 px or 5 ppt
 bindsym Control+Right resize grow width 5 px or 5 ppt
 
 
-#status bar configuration
-bar {
-    i3bar_command i3bar --transparency
-    position top
-    height 24
-	colors {
-        background #2f343fbf
-        statusline #2f343f
-        separator #4b5262
 
-        # colour of border, background, and text
-        focused_workspace       #2f343f #4a7eff #d8dee8
-        active_workspace        #2f343f #2f343f #d8dee8
-        inactive_workspace      #2f343f #2f343f #d8dee8
-        urgent_workspace       #2f343f #ebcb8b #2f343f
-    }
-        status_command i3status
-}
+#-----------------------Window colors-----------------------
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
-# window rules, you can find the window class using xprop
-for_window [class=".*"] border pixel 1
-assign [class=gnome-terminal] $workspace1
-assign [class=Firefox|Transmission-gtk|qutebrowser|telegram-desktop] $workspace2
-assign [class=Sublime|Geany|Pluma|Vim|Soffice|libreoffice*] $workspace3
-assign [class=Caja|atril|Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] $workspace4
+client.background       #F8F8F2
+
+
+#-----------------Default Window Rules--------------
+assign [class=gnome-terminal] $ws1
+assign [class=Firefox|Transmission-gtk|qutebrowser|telegram-desktop] $ws2
+assign [class=Sublime|Geany|Pluma|Vim|Soffice|libreoffice*] $ws3
+assign [class=Caja|atril|Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] $ws4
 assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 5
 
 #floating windows by default
@@ -192,10 +212,23 @@ for_window [class=Thunar|Caja|Lxappearance|Lxtask|Pavucontrol] floating enable
 #focus windows by default
 for_window [class=Sublime|Caja|atril|qutebrowser|Firefox|telegram-desktop|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 
-# colour of border, background, text, indicator, and child_border
-client.focused              #bf616a #2f343f #d8dee8 #4a7eff #4a7eff
-client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
-client.background           #2f343f
+
+#------------------Status Bar Config-----------------
+#bar {
+#    i3bar_command i3bar --transparency
+#    position top
+#    height 24
+#	colors {
+#        background #2f343fbf
+#        statusline #2f343f
+#        separator #4b5262
+#
+ #       # colour of border, background, and text
+#        focused_workspace       #2f343f #4a7eff #d8dee8
+#        active_workspace        #2f343f #2f343f #d8dee8
+#        inactive_workspace      #2f343f #2f343f #d8dee8
+#        urgent_workspace       #2f343f #ebcb8b #2f343f
+ #   }
+ #       status_command i3status
+#}
+
