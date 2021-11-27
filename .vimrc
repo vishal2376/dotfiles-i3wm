@@ -24,20 +24,31 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'christoomey/vim-tmux-navigator'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
 Plug 'psliwka/vim-smoothie'
 Plug 'Yggdroot/indentLine'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()
 
+"Save key binds
+noremap <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
+
+"Copy Paste
+vnoremap <silent> <C-c> "+y
+
+"Disable Caps Lock and use it as Escape
+au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+
+
 " Material Theme
-colorscheme material
 if (has('termguicolors'))
     set termguicolors
 endif
+colorscheme material
+
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'palenight'
 
@@ -58,9 +69,4 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'material'
-let g:airline_powerline_fonts = 1
 

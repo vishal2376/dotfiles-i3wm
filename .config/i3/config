@@ -7,7 +7,7 @@ font pango:Liga SFMono Nerd Font 9
 
 
 #----------------Window Gaps--------------
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 gaps inner 0
 gaps outer 0
 
@@ -73,7 +73,7 @@ bindsym $super+Shift+w exec --no-startup-id waldl
 #----------------Launch Applications---------------
 #bindsym $super+w exec --no-startup-id firefox
 bindsym $super+w exec --no-startup-id flashpeak-slimjet
-bindsym $super+e exec --no-startup-id thunar
+bindsym $super+e exec --no-startup-id caja
 
 
 #----------------Control volume-------------------
@@ -190,7 +190,6 @@ bindsym Control+Left resize shrink width 5 px or 5 ppt
 bindsym Control+Down resize grow height 5 px or 5 ppt
 bindsym Control+Up resize shrink height 5 px or 5 ppt
 bindsym Control+Right resize grow width 5 px or 5 ppt
-
 
 
 #-----------------------Window colors-----------------------
