@@ -2,9 +2,7 @@ set $super Mod4
 set $alt Mod1
 
 #--------------font setup-----------------
-#font pango:Noto Sans 8
-#font pango:DejaVu Sans Mono 8
-font pango:Liga SFMono Nerd Font 10
+font pango:Noto Sans 8
 
 
 #----------------Window Gaps--------------
@@ -13,7 +11,6 @@ gaps inner 20
 smart_gaps on
 smart_borders on
 smart_borders no_gaps
-# border_radius 5
 
 
 #---------move floating windows------------
@@ -22,11 +19,10 @@ floating_modifier $super
 
 #----------Autostart applications----------
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec_always --no-startup-id picom --experimental-backend &
 exec --no-startup-id polybar main
 exec_always --no-startup-id killall polybar && polybar main 
 exec --no-startup-id hsetroot -cover $(find $HOME/.local/share/wallhaven -type f | shuf -n 1) 
-#exec --no-startup-id compton -b
+exec --no-startup-id compton -b
 exec --no-startup-id nm-applet
 #exec flatpak run com.discordapp.Discord
 
