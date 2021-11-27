@@ -8,10 +8,18 @@ font pango:Liga SFMono Nerd Font 9
 
 #----------------Window Gaps--------------
 for_window [class="^.*"] border pixel 0
-gaps inner 20
-smart_gaps on
-smart_borders on
-smart_borders no_gaps
+gaps inner 0
+gaps outer 0
+
+
+#-----------Window Gaps shortcut---------
+bindsym $super+F12 gaps outer current plus 5
+bindsym $super+Shift+F12 gaps outer current minus 5
+
+bindsym $super+F11 gaps inner current plus 5
+bindsym $super+Shift+F11 gaps inner current mins 5
+
+bindsym $super+F10 gaps inner current set 0;gaps outer current set 0
 
 
 #---------move floating windows------------
