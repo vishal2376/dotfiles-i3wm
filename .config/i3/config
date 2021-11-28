@@ -74,6 +74,8 @@ bindsym $super+Shift+w exec --no-startup-id waldl
 #bindsym $super+w exec --no-startup-id firefox
 bindsym $super+w exec --no-startup-id flashpeak-slimjet
 bindsym $super+e exec --no-startup-id caja
+bindsym $super+Shift+v exec --no-startup-id gvim
+bindsym $super+Shift+s exec --no-startup-id sublime
 
 
 #----------------Control volume-------------------

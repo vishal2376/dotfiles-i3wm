@@ -1,4 +1,6 @@
 " General Settings
+
+colorscheme material
 set number
 set nocompatible
 set cursorline
