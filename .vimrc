@@ -54,18 +54,30 @@ vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
 "Copy Paste
-noremap <silent> <C-c> "+y
-inoremap <silent> <C-p> "+gP
+nnoremap <silent> <C-c> "+y
+nnoremap <silent> <C-y> "+gP
 
-noremap <TAB> %
+nnoremap <TAB> %
 
 "File compile
-autocmd filetype cpp noremap <F9> <ESC> :w <CR> :!g++ -o %< % && ./%< <CR>
+autocmd filetype cpp nnoremap <F9> <ESC> :w <CR> :!g++ -o %< % && ./%< <CR>
 autocmd filetype cpp inoremap <F9> <ESC> :w <CR> :!g++ -o %< % && ./%< <CR>
-autocmd filetype python noremap <F9> <ESC> :w <CR> :!python3 % <CR>
+
+autocmd filetype python nnoremap <F9> <ESC> :w <CR> :!python3 % <CR>
 autocmd filetype python inoremap <F9> <ESC> :w <CR> :!python3 % <CR>
 
-nnoremap <C-TAB> :b# <CR>
+autocmd filetype sh nnoremap <F9> <ESC> :w <CR> :!./% <CR>
+autocmd filetype sh inoremap <F9> <ESC> :w <CR> :!./% <CR>
+
+"Comment the code
+autocmd filetype cpp nnoremap <C-m> :s/^/\/\// <CR>  
+autocmd filetype python nnoremap <C-m> :s/^/#/ <CR>  
+
+"Close current file
+nnoremap <C-ESC> :bd <CR>
+
+"Switch between files
+noremap <C-TAB> :b# <CR>
 
 "Disable Caps Lock and use it as Escape
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
