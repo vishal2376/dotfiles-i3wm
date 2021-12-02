@@ -1,4 +1,4 @@
-"Basic settings
+"-----------------------------Basic settings-----------------------------
 set number
 set nocompatible
 set cursorline
@@ -39,14 +39,14 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
-Plug 'pangloss/vim-javascript'
+"Plug ''
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()
 
-"Custom Key Mappings {{{
+"---------------------------Key Mappings----------------------------------
 
 "Save file
 noremap <silent> <C-S> :update<CR>
@@ -83,12 +83,17 @@ noremap <C-TAB> :b# <CR>
 au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
-"}}}
+"Leader Key
+let mapleader=" "
+
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+"-----------------------Plugin Settings---------------------------
 
 
-" JavaScript
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
 
 " NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>
