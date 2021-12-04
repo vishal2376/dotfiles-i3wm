@@ -37,7 +37,8 @@ exec --no-startup-id nm-applet
 
 
 #---------------Run terminal----------------- 
-bindsym $super+Shift+Return exec --no-startup-id urxvt
+
+bindsym $alt+t exec --no-startup-id gnome-terminal
 bindsym $super+Return exec --no-startup-id gnome-terminal
 
 
