@@ -69,6 +69,10 @@ bindsym $super+Shift+F4 exec --no-startup-id notify-send "Restarting PC" && syst
 #Download Wallpapers
 bindsym $super+Shift+w exec --no-startup-id waldl
 
+#Disable and enable Caps Lock
+bindsym $super+F9 exec --no-startup-id notify-send "Caps Lock Disabled" && xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+bindsym $super+Shift+F9 exec --no-startup-id notify-send "Caps Lock Enabled" && xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+
 
 #----------------Launch Applications---------------
 #bindsym $super+w exec --no-startup-id firefox
