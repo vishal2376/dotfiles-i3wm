@@ -43,7 +43,7 @@ bindsym $super+Return exec --no-startup-id gnome-terminal
 
 
 #-----------------Launch Dmenu----------------
-bindsym $super+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
+bindsym $super+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=10' -nb '#292D3E' -nf '#A6ACCD' -sb '#484f72' -sf '#FFFFFF'"
  
 
 #-----------------Launch Rofi----------------
@@ -56,6 +56,10 @@ bindsym $super+Shift+t exec --no-startup-id hsetroot -cover $(find $HOME/.local/
 
 # Window Screenshot and preview
 bindsym Print exec --no-startup-id 	scrot -e 'mv $f ~/Pictures/Screenshots/ && sxiv -i ~/Pictures/Screenshots/$f'
+
+#Kill Applications
+bindsym $super+Escape exec --no-startup-id kill $(ps aux | grep vishal | awk '{print "[ " $2 " ] ---> "  $11}' | dmenu -i -p 'Kill Application:' -l 10 | awk '{print $2}')
+
 
 # lockscreen
 bindsym $super+Delete exec --no-startup-id betterlockscreen -l -t 'Hi Vishal'
