@@ -54,29 +54,45 @@ noremap <silent> <C-S> :update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
 "Copy Paste
-noremap <silent> <C-y> "+y
-noremap <silent> <C-p> "+gP
+noremap <silent> <C-c> "+y
+noremap <silent> <C-S-v> "+gP
 
 nnoremap <TAB> %
 
 "File compile
-autocmd filetype cpp nnoremap <F9> <ESC> :w <CR> :!g++ -o %< % && ./%< <CR>
-autocmd filetype cpp inoremap <F9> <ESC> :w <CR> :!g++ -o %< % && ./%< <CR>
+autocmd filetype cpp nnoremap <C-b> <ESC> :w <CR> :!g++ -o %< % && ./%< <CR>
+autocmd filetype cpp inoremap <C-b> <ESC> :w <CR> :!g++ -o %< % && ./%< <CR>
 
-autocmd filetype python nnoremap <F9> <ESC> :w <CR> :!python3 % <CR>
-autocmd filetype python inoremap <F9> <ESC> :w <CR> :!python3 % <CR>
+autocmd filetype python nnoremap <C-b> <ESC> :w <CR> :!python3 % <CR>
+autocmd filetype python inoremap <C-b> <ESC> :w <CR> :!python3 % <CR>
 
-autocmd filetype sh nnoremap <F9> <ESC> :w <CR> :!./% <CR>
-autocmd filetype sh inoremap <F9> <ESC> :w <CR> :!./% <CR>
+autocmd filetype sh nnoremap <C-b> <ESC> :w <CR> :!./% <CR>
+autocmd filetype sh inoremap <C-b> <ESC> :w <CR> :!./% <CR>
 
 "Close current file
-nnoremap <C-ESC> :bd <CR>
+nnoremap <C-w> :bd <CR>
+
+"New File
+nnoremap <C-n> :enew <CR>
 
 "Switch between files
-noremap <C-TAB> :bn <CR>
+nnoremap <C-TAB> :bn <CR>
+inoremap <C-TAB> <ESC> :bn <CR>
 
 "Select all text
 nnoremap <C-a> ggVG <CR>
+
+"Create Duplicate line
+inoremap <C-S-d> <ESC> yyp
+nnoremap <C-S-d> yyp
+nnoremap <C-S-d> yyp
+
+"Move line
+nnoremap <C-S-DOWN> ddp
+inoremap <C-S-DOWN> <ESC> ddp  
+
+nnoremap <C-S-UP> dd2kp  
+inoremap <C-S-UP> <ESC> dd2kp  
 
 "Split screen
 nnoremap <C-v> :vsplit <CR>

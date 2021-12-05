@@ -17,7 +17,7 @@ bindsym $super+F12 gaps outer current plus 5
 bindsym $super+Shift+F12 gaps outer current minus 5
 
 bindsym $super+F11 gaps inner current plus 5
-bindsym $super+Shift+F11 gaps inner current mins 5
+bindsym $super+Shift+F11 gaps inner current minus 5
 
 bindsym $super+F10 gaps inner current set 0;gaps outer current set 0
 
@@ -176,8 +176,6 @@ bindsym $super+7 workspace $ws7
 bindsym $super+8 workspace $ws8
 bindsym $super+9 workspace $ws9
 bindsym $super+Tab workspace next
-bindsym $super+Control+Right workspace next
-bindsym $super+Control+Left workspace prev
 
 # move focused container to workspace
 bindsym $super+Shift+1 move container to workspace $ws1
@@ -197,10 +195,10 @@ bindsym $super+shift+e exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i
 
 
 #---------------------Resize Windows-----------------
-bindsym Control+Left resize shrink width 5 px or 5 ppt
-bindsym Control+Down resize grow height 5 px or 5 ppt
-bindsym Control+Up resize shrink height 5 px or 5 ppt
-bindsym Control+Right resize grow width 5 px or 5 ppt
+bindsym $super+Control+Left resize shrink width 5 px or 5 ppt
+bindsym $super+Control+Down resize grow height 5 px or 5 ppt
+bindsym $super+Control+Up resize shrink height 5 px or 5 ppt
+bindsym $super+Control+Right resize grow width 5 px or 5 ppt
 
 
 #-----------------------Window colors-----------------------
