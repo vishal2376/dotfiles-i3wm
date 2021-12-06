@@ -40,6 +40,7 @@ exec --no-startup-id nm-applet
 
 bindsym $alt+t exec --no-startup-id gnome-terminal
 bindsym $super+Return exec --no-startup-id gnome-terminal
+bindsym $super+Shift+Return exec --no-startup-id gnome-terminal -e fish
 
 
 #-----------------Launch Dmenu----------------
