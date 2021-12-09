@@ -1,3 +1,7 @@
+"Fix vim 4m2m weird text    
+let &t_TI = ""
+let &t_TE = ""
+
 "-----------------------------Basic settings-----------------------------
 set number
 set nocompatible
@@ -73,7 +77,7 @@ autocmd filetype sh inoremap <C-b> <ESC> :w <CR> :!./% <CR>
 nnoremap <C-w> :bd <CR>
 
 "New File
-nnoremap <C-n> :enew <CR>
+nnoremap <C-S-n> :enew <CR>
 
 "Switch between files
 nnoremap <C-TAB> :bn <CR>
