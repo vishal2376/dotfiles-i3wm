@@ -7,7 +7,7 @@
    
     background:                  #282A36E0;
     foreground:                  #F8F8F2;
-    highlight:					 #FF79C6;
+    highlight:					 #BD93F9;
     normal-foreground:           @foreground;
     selected-normal-foreground:  @foreground; 
     spacing:                     8;
