@@ -23,8 +23,6 @@ ignore_newline = no
 stack_duplicates = true
 hide_duplicate_count = false
 show_indicators = yes
-icon_position = left
-max_icon_size = 32
 sticky_history = yes
 history_length = 20
 browser = /usr/bin/brave
@@ -41,13 +39,13 @@ close_all = ctrl+shift+space
 history = ctrl+shift+period
 
 [urgency_low]
-background = "#292D3Ea0"
+background = "#292D3EBF"
 foreground = "#A6ACCD"
 frame_color = "#484f72"
 timeout = 2
 
 [urgency_normal]
-background = "#292D3Ea0"
+background = "#292D3EBF"
 foreground = "#A6ACCD"
 frame_color = "#484f72"
 timeout = 4
