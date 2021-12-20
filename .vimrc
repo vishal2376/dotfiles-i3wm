@@ -44,7 +44,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
-Plug 'junegunn/fzf'
+Plug 'dylanaraps/fff'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -86,11 +86,6 @@ inoremap <C-TAB> <ESC> :bn <CR>
 "Select all text
 nnoremap <C-a> ggVG <CR>
 
-"Create Duplicate line
-inoremap <C-S-d> <ESC> yyp
-nnoremap <C-S-d> yyp
-nnoremap <C-S-d> yyp
-
 "Move line
 nnoremap <C-S-DOWN> ddp
 inoremap <C-S-DOWN> <ESC> ddp  
@@ -126,7 +121,7 @@ nnoremap <leader>q :close<CR>
 "-----------------------Plugin Settings---------------------------
 
 "fzf
-nnoremap<silent><C-f> :FZF <CR>
+nnoremap<silent><C-f> :F <CR>
 
 " NERDTree
 nnoremap <C-n> :NERDTreeToggle<CR>

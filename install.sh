@@ -6,8 +6,8 @@ sudo apt-get install g++ git python3 python3-pip -y
 #Basic required tools
 
 echo "[+] Installing Required tools..."
-sudo apt-get install i3 i3-gaps -y
-sudo apt-get install i3-wm i3-gaps-wm polybar dunst nm-applet suckless-tools betterlockscreen -y
+sudo apt-get install i3-gaps i3-gaps-wm -y
+sudo apt-get install polybar dunst nm-applet suckless-tools betterlockscreen -y
 
 #Additional Packages for i3wm
 
@@ -27,6 +27,11 @@ sudo apt-get install vim nvim -y
 echo "[+] Copying all config files... "
 cp -r . ${HOME}/
 echo "[+] Copied successfully..."
+
+#Execute Permissions
+echo "[+] Giving +x permissions to .config/ ..."
+chmod -R +x .
+
 
 #Favourite tools from Github 
 echo "[+] Installing Requirements for Github Repos..."
